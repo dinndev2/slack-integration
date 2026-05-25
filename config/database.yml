@@ -79,5 +79,18 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  primary:
+    <<: *default
+    database: app_production
+
+  cache:
+    <<: *default
+    database: app_cache
+
+  queue:
+    <<: *default
+    database: app_queue
+
+  cable:
+    <<: *default
+    database: app_cable
