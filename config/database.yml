@@ -79,20 +79,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
+  primary:
     <<: *default
-    database: slack_ai_integration_production
-    username: slack_ai_integration
-    password: <%= ENV["SLACK_AI_INTEGRATION_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: slack_ai_integration_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: slack_ai_integration_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: slack_ai_integration_production_cable
-    migrations_paths: db/cable_migrate
+    url: <%= ENV["DATABASE_URL"] %>
